@@ -3,7 +3,7 @@
   "description": "Scores fidelity of a generated output against a source pattern via N1 Zhang-Shasha + N4 Salton-Wong-Yang cosine. Reports (score, ci_low, ci_high, N) per the honest-numbers contract. Use when the user runs /naga:validate.",
   "version": "0.1.0",
   "author": {
-    "name": "enchanted-plugins"
+    "name": "enchanter-ai"
   },
   "license": "MIT",
   "keywords": [

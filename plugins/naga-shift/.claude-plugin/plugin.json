@@ -3,7 +3,7 @@
   "description": "Generates a target artifact matching the source-pattern fingerprint via N1+N2+N3+N4 with N5 per-class threshold gating. Loop: emit chunk, score N4, rewrite below threshold. Use when the user runs /naga:match.",
   "version": "0.1.0",
   "author": {
-    "name": "enchanted-plugins"
+    "name": "enchanter-ai"
   },
   "license": "MIT",
   "keywords": [

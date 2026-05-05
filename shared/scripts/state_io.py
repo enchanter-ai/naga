@@ -5,12 +5,18 @@ Every JSON state file in Naga goes through `atomic_write_json`. No direct
 open('w') on state paths, ever. See `shared/conduct/verification.md` and
 Gorgon's state_io.py for the invariant this enforces.
 
+JSONL appends go through `append_jsonl`, which acquires an exclusive file
+lock per write (msvcrt on Windows, fcntl elsewhere) so concurrent emitters
+across plugin boundaries cannot interleave bytes mid-line. See finding F-016
+in the ecosystem audit.
+
 Stdlib only.
 """
 from __future__ import annotations
 
 import json
 import os
+import sys
 import tempfile
 from pathlib import Path
 from typing import Any
@@ -57,13 +63,39 @@ def read_json(path: Path | str, default: Any = None) -> Any:
 
 
 def append_jsonl(path: Path | str, record: dict) -> None:
-    """JSONL append with fsync. Fail-open: never raises to the caller."""
+    """JSONL append: locked + flushed. Cross-platform.
+
+    Fail-open: never raises to the caller. The exclusive file lock prevents
+    concurrent emitters (e.g., naga-learning's pre-compact hook racing the
+    n5_gauss heartbeat) from interleaving partial-line bytes that would
+    corrupt downstream Bayesian posterior reads.
+    """
     p = Path(path)
     p.parent.mkdir(parents=True, exist_ok=True)
+    line = json.dumps(record, separators=(",", ":")) + "\n"
     try:
-        with open(p, "a", encoding="utf-8") as fh:
-            fh.write(json.dumps(record, separators=(",", ":")) + "\n")
-            fh.flush()
-            os.fsync(fh.fileno())
+        with p.open("a", encoding="utf-8") as fh:
+            if sys.platform == "win32":
+                import msvcrt
+                try:
+                    msvcrt.locking(fh.fileno(), msvcrt.LK_LOCK, 1)
+                    fh.write(line)
+                    fh.flush()
+                    os.fsync(fh.fileno())
+                finally:
+                    try:
+                        fh.seek(0)
+                        msvcrt.locking(fh.fileno(), msvcrt.LK_UNLCK, 1)
+                    except OSError:
+                        pass
+            else:
+                import fcntl
+                try:
+                    fcntl.flock(fh.fileno(), fcntl.LOCK_EX)
+                    fh.write(line)
+                    fh.flush()
+                    os.fsync(fh.fileno())
+                finally:
+                    fcntl.flock(fh.fileno(), fcntl.LOCK_UN)
     except OSError:
         pass

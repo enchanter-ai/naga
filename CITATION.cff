@@ -2,7 +2,7 @@ cff-version: 1.2.0
 message: "If you use this software, please cite it as below."
 title: "Naga"
 authors:
-  - name: "enchanted-plugins"
+  - name: "enchanter-ai"
 abstract: >
   Observes an existing artifact's structural and stylistic fingerprint and
   generates new artifacts that match the observed shape, vocabulary, and
@@ -11,7 +11,7 @@ abstract: >
 version: 0.1.0
 date-released: 2026-04-25
 license: MIT
-repository-code: "https://github.com/enchanted-plugins/naga"
+repository-code: "https://github.com/enchanter-ai/naga"
 keywords:
   - claude-code
   - pattern-replication

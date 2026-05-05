@@ -3,7 +3,7 @@
 # the `full` meta-plugin pulls them all in via one dependency-resolution pass.
 set -euo pipefail
 
-REPO="git@github.com:enchanted-plugins/naga.git"
+REPO="git@github.com:enchanter-ai/naga.git"
 PLUGIN_HOME_DIR="${PLUGIN_HOME_DIR:-$HOME/.naga}"
 
 step() { printf "\n\033[1;36m> %s\033[0m\n" "$*"; }
@@ -43,7 +43,7 @@ cat <<'EOF'
 
   Finish in Claude Code with TWO commands:
 
-    /plugin marketplace add enchanted-plugins/naga
+    /plugin marketplace add enchanter-ai/naga
     /plugin install full@naga
 
   Verify with:   /plugin list

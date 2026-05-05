@@ -3,7 +3,7 @@
   "description": "Cross-repo pattern replication with sibling-repo path resolution. Runs N1+N2+N3+N4 against artifacts in two distinct repository trees. Use when the user runs /naga:match-across with a remote source and target.",
   "version": "0.1.0",
   "author": {
-    "name": "enchanted-plugins"
+    "name": "enchanter-ai"
   },
   "license": "MIT",
   "keywords": [

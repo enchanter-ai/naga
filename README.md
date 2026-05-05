@@ -13,7 +13,7 @@
   <a href="https://www.repostatus.org/#active"><img alt="Project Status: Active" src="https://www.repostatus.org/badges/latest/active.svg"></a>
 </p>
 
-> **An @enchanted-plugins product — algorithm-driven, agent-managed, self-learning.**
+> **An @enchanter-ai product — algorithm-driven, agent-managed, self-learning.**
 
 Observes an existing artifact's structural and stylistic fingerprint and generates new artifacts that match the observed shape, vocabulary, and naming idiom. Source-as-spec replication — orthogonal to from-scratch prompt engineering (Wixie) and codebase mapping (Gorgon).
 
@@ -159,7 +159,7 @@ The PreCompact hook is the single hook binding in Naga and is intentional — do
 ## Install
 
 ```
-/plugin marketplace add enchanted-plugins/naga
+/plugin marketplace add enchanter-ai/naga
 /plugin install full@naga
 ```
 
@@ -227,7 +227,7 @@ Optional subscriptions (Phase-2 enrichment): `gorgon.snapshot.captured` (target-
 
 ## Roadmap
 
-Tracked in [docs/ROADMAP.md](docs/ROADMAP.md) and the shared [ecosystem map](https://github.com/enchanted-plugins/wixie/blob/main/docs/ecosystem.md). For upcoming work specific to Naga, see issues tagged [roadmap](https://github.com/enchanted-plugins/naga/labels/roadmap).
+Tracked in [docs/ROADMAP.md](docs/ROADMAP.md) and the shared [ecosystem map](https://github.com/enchanter-ai/wixie/blob/main/docs/ecosystem.md). For upcoming work specific to Naga, see issues tagged [roadmap](https://github.com/enchanter-ai/naga/labels/roadmap).
 
 ## The Science Behind Naga
 
@@ -293,7 +293,7 @@ applied across all plugins.
 - **Bird et al.** — Copilot evaluations (2022) — documented the cross-file consistency weak axis that motivates N1's multi-file fingerprint.
 - **Anthropic + OpenAI few-shot ablation literature** — documented why source-specific minority patterns wash out under prior-averaging few-shot prompting; motivates Naga's deterministic-constraint design.
 - **Benimatic** — Twilight Forest (2011) — the Minecraft mod whose Naga boss gave this plugin its name and metaphor.
-- **@enchanted-plugins** siblings — Wixie, Emu, Crow, Hydra, Lich, Sylph, Pech, Djinn, Gorgon — for the canonical template, the event-bus pattern, and the ecosystem contract.
+- **@enchanter-ai** siblings — Wixie, Emu, Crow, Hydra, Lich, Sylph, Pech, Djinn, Gorgon — for the canonical template, the event-bus pattern, and the ecosystem contract.
 
 ## Versioning & release cadence
 
@@ -303,7 +303,7 @@ Naga follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html). Breakin
 
 Pull requests welcome. Key rules:
 
-- Do not edit `shared/conduct/*.md` in a Naga PR; raise the change in the [schematic](https://github.com/enchanted-plugins/schematic) repo so it propagates to every sibling.
+- Do not edit `shared/conduct/*.md` in a Naga PR; raise the change in the [schematic](https://github.com/enchanter-ai/schematic) repo so it propagates to every sibling.
 - Every new engine needs an Author-Year docstring citation and a `docs/science/README.md` section.
 - The single PreCompact hook opens with the subagent-loop guard and exits 0 fail-open. Naga is skill-invoked by design — do not add SessionStart, PostToolUse, or UserPromptSubmit hooks.
 - Honest-numbers contract on every artifact: no N, no handoff. The N4 cosine score must combine N1 + N2 + N3 vectors; single-axis fidelity is rejected.
@@ -316,9 +316,9 @@ See [CITATION.cff](CITATION.cff) for machine-readable citation metadata.
 ```
 @software{naga_2026,
   title   = {Naga: Source-as-spec pattern replication for Claude Code},
-  author  = {{enchanted-plugins}},
+  author  = {{enchanter-ai}},
   year    = {2026},
-  url     = {https://github.com/enchanted-plugins/naga},
+  url     = {https://github.com/enchanter-ai/naga},
   license = {MIT}
 }
 ```

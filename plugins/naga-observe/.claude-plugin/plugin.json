@@ -3,7 +3,7 @@
   "description": "Extracts the pattern fingerprint from a source artifact via N1 Zhang-Shasha tree edit signature + N2 Spaerck Jones TF-IDF over identifier/comment/structure tokens. Persists state/patterns/<hash>.json. Use when the user runs /naga:observe.",
   "version": "0.1.0",
   "author": {
-    "name": "enchanted-plugins"
+    "name": "enchanter-ai"
   },
   "license": "MIT",
   "keywords": [

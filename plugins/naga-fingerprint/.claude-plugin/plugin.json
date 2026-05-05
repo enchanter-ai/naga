@@ -3,7 +3,7 @@
   "description": "Read-only pattern report via N2 Spaerck Jones TF-IDF + N3 Levenshtein naming-convention scan. No generation, no state mutation outside reports. Use when the user runs /naga:fingerprint to inspect an artifact's stylistic signature.",
   "version": "0.1.0",
   "author": {
-    "name": "enchanted-plugins"
+    "name": "enchanter-ai"
   },
   "license": "MIT",
   "keywords": [

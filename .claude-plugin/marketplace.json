@@ -1,7 +1,7 @@
 {
   "name": "naga",
   "owner": {
-    "name": "enchanted-plugins"
+    "name": "enchanter-ai"
   },
   "metadata": {
     "description": "Observes an existing artifact's structural and stylistic fingerprint and generates new artifacts that match the observed shape, vocabulary, and naming idiom.",
