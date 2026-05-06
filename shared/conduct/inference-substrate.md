@@ -60,7 +60,7 @@ Do not reconcile on every emit — SPRT needs multiple observations to elevate a
 
 ## Reading a briefing
 
-At session start, the target plugin's primary skill reads `state/briefings/<plugin>.md` as top-of-context material (U-curve top-200-tokens slot per `shared/conduct/context.md`).
+At session start, the target plugin's primary skill reads `state/briefings/<plugin>.md` as top-of-context material (U-curve top-200-tokens slot per `shared/foundations/conduct/context.md`).
 
 - Treat the briefing as advisory, not mandatory. Honest numbers over blind compliance.
 - Prefer elevated patterns with EMA weight > 0.5 and observations ≥ 3.

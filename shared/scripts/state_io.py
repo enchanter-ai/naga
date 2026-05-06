@@ -2,7 +2,7 @@
 state_io.py — atomic write-tmp-rename persistence helpers.
 
 Every JSON state file in Naga goes through `atomic_write_json`. No direct
-open('w') on state paths, ever. See `shared/conduct/verification.md` and
+open('w') on state paths, ever. See `shared/foundations/conduct/verification.md` and
 Gorgon's state_io.py for the invariant this enforces.
 
 JSONL appends go through `append_jsonl`, which acquires an exclusive file

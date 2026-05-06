@@ -22,7 +22,7 @@ Generates a target artifact whose N4 cosine fidelity to the source fingerprint c
 ## Example
 
 ```
-/naga:match shared/conduct/discipline.md shared/conduct/discipline-mirror.md
+/naga:match shared/foundations/conduct/discipline.md shared/conduct/discipline-mirror.md
 ```
 
 ## Invokes

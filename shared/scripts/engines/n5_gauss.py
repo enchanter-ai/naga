@@ -120,7 +120,7 @@ def _main() -> int:
         )
         return 0
     except Exception:
-        # Fail-open per shared/conduct/hooks.md.
+        # Fail-open per shared/foundations/conduct/hooks.md.
         return 0
 
 

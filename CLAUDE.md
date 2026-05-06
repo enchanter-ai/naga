@@ -10,19 +10,19 @@ orthogonal to prompt engineering from scratch (Wixie), structural intelligence
 
 These apply to every skill in every plugin. Load once; do not re-derive.
 
-- @shared/conduct/discipline.md — coding conduct: think-first, simplicity, surgical edits, goal-driven loops
-- @shared/conduct/doubt-engine.md — adversarial self-check before agreement; counter to F01 sycophancy
-- @shared/conduct/context.md — attention-budget hygiene, U-curve placement, checkpoint protocol
-- @shared/conduct/verification.md — independent checks, baseline snapshots, dry-run for destructive ops
-- @shared/conduct/delegation.md — subagent contracts, tool whitelisting, parallel vs. serial rules
-- @shared/conduct/failure-modes.md — 14-code taxonomy for accumulated-learning logs
-- @shared/conduct/tool-use.md — tool-choice hygiene, error payload contract, parallel-dispatch rules
-- @shared/conduct/formatting.md — per-target format (XML/Markdown/minimal/few-shot), prefill + stop sequences
-- @shared/conduct/skill-authoring.md — SKILL.md frontmatter discipline, discovery test
-- @shared/conduct/hooks.md — advisory-only hooks, injection over denial, fail-open
-- @shared/conduct/precedent.md — log self-observed failures to `state/precedent-log.md`; consult before risky steps
-- @shared/conduct/tier-sizing.md — Opus intent-level, Sonnet decomposed, Haiku senior-to-junior
-- @shared/conduct/web-fetch.md — WebFetch is Haiku-tier-only; cache and budget
+- @shared/foundations/conduct/discipline.md — coding conduct: think-first, simplicity, surgical edits, goal-driven loops
+- @shared/foundations/conduct/doubt-engine.md — adversarial self-check before agreement; counter to F01 sycophancy
+- @shared/foundations/conduct/context.md — attention-budget hygiene, U-curve placement, checkpoint protocol
+- @shared/foundations/conduct/verification.md — independent checks, baseline snapshots, dry-run for destructive ops
+- @shared/foundations/conduct/delegation.md — subagent contracts, tool whitelisting, parallel vs. serial rules
+- @shared/foundations/conduct/failure-modes.md — 14-code taxonomy for accumulated-learning logs
+- @shared/foundations/conduct/tool-use.md — tool-choice hygiene, error payload contract, parallel-dispatch rules
+- @shared/foundations/conduct/formatting.md — per-target format (XML/Markdown/minimal/few-shot), prefill + stop sequences
+- @shared/foundations/conduct/skill-authoring.md — SKILL.md frontmatter discipline, discovery test
+- @shared/foundations/conduct/hooks.md — advisory-only hooks, injection over denial, fail-open
+- @shared/foundations/conduct/precedent.md — log self-observed failures to `state/precedent-log.md`; consult before risky steps
+- @shared/foundations/conduct/tier-sizing.md — Opus intent-level, Sonnet decomposed, Haiku senior-to-junior
+- @shared/foundations/conduct/web-fetch.md — WebFetch is Haiku-tier-only; cache and budget
 - @shared/conduct/inference-substrate.md — emit-only contract for the Wixie inference engine
 
 When a module conflicts with a plugin-local instruction, the plugin wins — but log the override.
@@ -91,7 +91,7 @@ Markers: **[H]** hook-enforced (deterministic) · **[A]** advisory (relies on yo
 | `plugins/naga-observe/state/patterns/<hash>.json`           | naga-observe      | Persisted fingerprint dict per source-artifact hash            |
 | `plugins/naga-learning/state/posterior.json`                | naga-learning     | N5 per-(pattern-class x target-domain) fidelity posterior      |
 | `plugins/naga-learning/state/learnings.jsonl`               | naga-learning     | Append-only compaction-event log                               |
-| `plugins/<sub>/state/precedent-log.md`                      | per sub-plugin    | Self-observed operational failures (see @shared/conduct/precedent.md) |
+| `plugins/<sub>/state/precedent-log.md`                      | per sub-plugin    | Self-observed operational failures (see @shared/foundations/conduct/precedent.md) |
 
 ## Agent tiers
 
