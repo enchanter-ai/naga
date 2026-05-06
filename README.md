@@ -260,7 +260,7 @@ collapse into one axis.
 ## Agent Conduct (13 Modules)
 
 Every skill inherits a reusable behavioral contract from
-[shared/conduct/](shared/conduct/) — loaded once into [CLAUDE.md](CLAUDE.md),
+[shared/conduct/](shared/foundations/conduct/) — loaded once into [CLAUDE.md](CLAUDE.md),
 applied across all plugins.
 
 | Module                         | What it governs                                                            |
@@ -277,7 +277,7 @@ applied across all plugins.
 | [precedent.md](shared/foundations/conduct/precedent.md)       | log self-observed failures, consult before risky steps  |
 | [tier-sizing.md](shared/foundations/conduct/tier-sizing.md)   | Opus intent-level, Sonnet decomposed, Haiku step-by-step|
 | [web-fetch.md](shared/foundations/conduct/web-fetch.md)       | WebFetch is Haiku-tier-only; cache and budget           |
-| [inference-substrate.md](shared/conduct/inference-substrate.md) | inference-engine emit-only contract        |
+| [inference-substrate.md](shared/foundations/conduct/inference-substrate.md) | inference-engine emit-only contract        |
 
 ## Architecture
 
@@ -303,7 +303,7 @@ Naga follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html). Breakin
 
 Pull requests welcome. Key rules:
 
-- Do not edit `shared/conduct/*.md` in a Naga PR; raise the change in the [schematic](https://github.com/enchanter-ai/schematic) repo so it propagates to every sibling.
+- Do not edit `shared/foundations/conduct/*.md` in a Naga PR; raise the change in the [schematic](https://github.com/enchanter-ai/schematic) repo so it propagates to every sibling.
 - Every new engine needs an Author-Year docstring citation and a `docs/science/README.md` section.
 - The single PreCompact hook opens with the subagent-loop guard and exits 0 fail-open. Naga is skill-invoked by design — do not add SessionStart, PostToolUse, or UserPromptSubmit hooks.
 - Honest-numbers contract on every artifact: no N, no handoff. The N4 cosine score must combine N1 + N2 + N3 vectors; single-axis fidelity is rejected.
