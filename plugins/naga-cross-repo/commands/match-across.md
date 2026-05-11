@@ -22,7 +22,7 @@ Reads a source artifact in one repository tree and generates a matched-form arti
 ## Example
 
 ```
-/naga:match-across <repo-root>/wixie/shared/foundations/conduct/discipline.md <repo-root>/naga/shared/foundations/conduct/discipline.md
+/naga:match-across <repo-root>/wixie/../enchanter-foundations/packages/core/conduct/discipline.md <repo-root>/naga/../enchanter-foundations/packages/core/conduct/discipline.md
 ```
 
 ## Invokes

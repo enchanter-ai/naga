@@ -21,7 +21,7 @@ Extracts the structural and stylistic fingerprint of `<source>` via N1 AST + N2 
 ## Example
 
 ```
-/naga:observe shared/foundations/conduct/discipline.md
+/naga:observe ../enchanter-foundations/packages/core/conduct/discipline.md
 ```
 
 Returns the fingerprint hash and the top-10 N2 terms; persists the full record under state.
