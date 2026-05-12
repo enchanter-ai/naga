@@ -167,15 +167,13 @@ Or cherry-pick: `/plugin install naga-fingerprint@naga`.
 
 ## Quickstart
 
-```
-/plugin install full@naga
-/naga:observe ../enchanter-foundations/packages/core/conduct/discipline.md
-/naga:match  ../enchanter-foundations/packages/core/conduct/discipline.md  shared/conduct/discipline-mirror.md
+```bash
+git clone https://github.com/enchanter-ai/naga
+cd naga
+./scripts/bootstrap.sh    # canonical first command — installs enchanter-foundations sibling
 ```
 
-Expected: a fingerprint JSON, then a generated mirror artifact with
-`(score, ci_low, ci_high, N)` printed and persisted.
-
+Without `./scripts/bootstrap.sh`, conduct imports will silently miss and Claude Code's `@`-loader will fail-soft. Always bootstrap first.
 ## 7 Plugins, 3 Agents
 
 | Plugin              | Trigger                            | Engines       | Agent (tier)                 |
