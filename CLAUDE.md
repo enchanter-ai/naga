@@ -11,6 +11,7 @@ orthogonal to prompt engineering from scratch (Wixie), structural intelligence
 These apply to every skill in every plugin. Load once; do not re-derive.
 
 - @../foundations/packages/core/conduct/discipline.md — coding conduct: think-first, simplicity, surgical edits, goal-driven loops
+- @../foundations/packages/core/conduct/capability-fidelity.md — contracts survive capability gaps: recover, escalate, or abort; never silently substitute
 - @../foundations/packages/core/conduct/doubt-engine.md — adversarial self-check before agreement; counter to F01 sycophancy
 - @../foundations/packages/core/conduct/context.md — attention-budget hygiene, U-curve placement, checkpoint protocol
 - @../foundations/packages/core/conduct/verification.md — independent checks, baseline snapshots, dry-run for destructive ops
