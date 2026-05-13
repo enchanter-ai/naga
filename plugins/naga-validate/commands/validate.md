@@ -22,7 +22,7 @@ Returns `(score, ci_low, ci_high, N, verdict)` for `<new>` measured against `<so
 ## Example
 
 ```
-/naga:validate shared/conduct/discipline-mirror.md ../foundations/packages/core/conduct/discipline.md
+/naga:validate shared/conduct/discipline-mirror.md ../vis/packages/core/conduct/discipline.md
 ```
 
 ## Invokes

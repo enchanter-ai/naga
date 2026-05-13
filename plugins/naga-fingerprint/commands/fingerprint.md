@@ -21,7 +21,7 @@ Returns the top-15 N2 TF-IDF terms and the N3 naming-convention distribution for
 ## Example
 
 ```
-/naga:fingerprint ../foundations/packages/core/conduct/discipline.md
+/naga:fingerprint ../vis/packages/core/conduct/discipline.md
 ```
 
 ## Invokes

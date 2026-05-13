@@ -19,7 +19,7 @@ Observes an existing artifact's structural and stylistic fingerprint and generat
 
 **6 sub-plugins. 5 engines. 3 agents. 5 slash commands. Single PreCompact hook by design (skill-invoked, like Wixie). One install.**
 
-> Developer runs `/naga:observe ../foundations/packages/core/conduct/discipline.md`. **naga-fingerprinter** extracts the AST/Markdown shape vector via **N1 Zhang-Shasha** (148 nodes), the TF-IDF token signature via **N2 Spärck Jones** (84 distinct stems), and the heading/identifier naming convention via **N3 Levenshtein** (kebab-case, 4-level nesting). Fingerprint hash `a3f2…` persists to `state/patterns/`. Developer then runs `/naga:match ../foundations/packages/core/conduct/discipline.md shared/conduct/security.md` to scaffold a new sibling module. **naga-shaper** generates chunk-by-chunk, scoring each via **N4 Salton-Wong-Yang cosine** against the fingerprint; chunks below the per-(`claude-md`, current target) **N5** posterior threshold trigger rewrite. Final fidelity: `0.87 (CI 0.82–0.92, N=232)` — clears the 0.78 threshold. `/compact` fires later — **naga-learning** updates the `(claude-md × claude-md)` posterior to tighten next-time's threshold.
+> Developer runs `/naga:observe ../vis/packages/core/conduct/discipline.md`. **naga-fingerprinter** extracts the AST/Markdown shape vector via **N1 Zhang-Shasha** (148 nodes), the TF-IDF token signature via **N2 Spärck Jones** (84 distinct stems), and the heading/identifier naming convention via **N3 Levenshtein** (kebab-case, 4-level nesting). Fingerprint hash `a3f2…` persists to `state/patterns/`. Developer then runs `/naga:match ../vis/packages/core/conduct/discipline.md shared/conduct/security.md` to scaffold a new sibling module. **naga-shaper** generates chunk-by-chunk, scoring each via **N4 Salton-Wong-Yang cosine** against the fingerprint; chunks below the per-(`claude-md`, current target) **N5** posterior threshold trigger rewrite. Final fidelity: `0.87 (CI 0.82–0.92, N=232)` — clears the 0.78 threshold. `/compact` fires later — **naga-learning** updates the `(claude-md × claude-md)` posterior to tighten next-time's threshold.
 >
 > Time: deterministic fingerprint, bounded generation loop. Developer effort: invoke one slash command.
 
@@ -45,7 +45,7 @@ The question this plugin answers: *Make something new that looks like this exist
 
 ## Who this is for
 
-- Developers propagating idioms across sibling modules — when `../foundations/packages/core/conduct/discipline.md` is the gold standard and the next five conduct modules must match its shape, vocabulary, and naming convention exactly.
+- Developers propagating idioms across sibling modules — when `../vis/packages/core/conduct/discipline.md` is the gold standard and the next five conduct modules must match its shape, vocabulary, and naming convention exactly.
 - Teams scaffolding from existing artifacts instead of from a template repo: point Naga at the real source at invocation time; no separate template to maintain or drift.
 - Anyone who has heard "it's almost right" from a reviewer — that phrase diagnoses single-axis replication (correct structure, alien naming, or vice versa); Naga requires N1 + N2 + N3 to jointly clear the N4 fidelity threshold.
 
@@ -170,7 +170,7 @@ Or cherry-pick: `/plugin install naga-fingerprint@naga`.
 ```bash
 git clone https://github.com/enchanter-ai/naga
 cd naga
-./scripts/bootstrap.sh    # canonical first command — installs foundations sibling
+./scripts/bootstrap.sh    # canonical first command — installs vis sibling
 ```
 
 Without `./scripts/bootstrap.sh`, conduct imports will silently miss and Claude Code's `@`-loader will fail-soft. Always bootstrap first.
@@ -258,24 +258,24 @@ collapse into one axis.
 ## Agent Conduct (13 Modules)
 
 Every skill inherits a reusable behavioral contract from
-[shared/conduct/](shared/foundations/conduct/) — loaded once into [CLAUDE.md](CLAUDE.md),
+[shared/conduct/](shared/vis/conduct/) — loaded once into [CLAUDE.md](CLAUDE.md),
 applied across all plugins.
 
 | Module                         | What it governs                                                            |
 |--------------------------------|----------------------------------------------------------------------------|
-| [discipline.md](../foundations/packages/core/conduct/discipline.md) | think-first, simplicity, surgical edits, goal-driven loops |
-| [context.md](../foundations/packages/core/conduct/context.md)       | attention-budget hygiene, U-curve, checkpoint protocol     |
-| [verification.md](../foundations/packages/core/conduct/verification.md) | baseline snapshots, dry-run, post-change diff read-back |
-| [delegation.md](../foundations/packages/core/conduct/delegation.md)     | subagent contracts, tool whitelisting, parallel rules    |
-| [failure-modes.md](../foundations/packages/core/conduct/failure-modes.md) | F01-F14 taxonomy                                       |
-| [tool-use.md](../foundations/packages/core/conduct/tool-use.md)         | right-tool-first-try, parallel vs. serial               |
-| [formatting.md](../foundations/packages/skills/conduct/formatting.md)     | XML/Markdown/minimal/few-shot, prefill + stop seq.      |
-| [skill-authoring.md](../foundations/packages/skills/conduct/skill-authoring.md) | SKILL.md frontmatter discipline                    |
-| [hooks.md](../foundations/packages/core/conduct/hooks.md)               | advisory-only, injection over denial, fail-open         |
-| [precedent.md](../foundations/packages/core/conduct/precedent.md)       | log self-observed failures, consult before risky steps  |
-| [tier-sizing.md](../foundations/packages/core/conduct/tier-sizing.md)   | Opus intent-level, Sonnet decomposed, Haiku step-by-step|
-| [web-fetch.md](../foundations/packages/web/conduct/web-fetch.md)       | WebFetch is Haiku-tier-only; cache and budget           |
-| [inference-substrate.md](shared/foundations/conduct/inference-substrate.md) | inference-engine emit-only contract        |
+| [discipline.md](../vis/packages/core/conduct/discipline.md) | think-first, simplicity, surgical edits, goal-driven loops |
+| [context.md](../vis/packages/core/conduct/context.md)       | attention-budget hygiene, U-curve, checkpoint protocol     |
+| [verification.md](../vis/packages/core/conduct/verification.md) | baseline snapshots, dry-run, post-change diff read-back |
+| [delegation.md](../vis/packages/core/conduct/delegation.md)     | subagent contracts, tool whitelisting, parallel rules    |
+| [failure-modes.md](../vis/packages/core/conduct/failure-modes.md) | F01-F14 taxonomy                                       |
+| [tool-use.md](../vis/packages/core/conduct/tool-use.md)         | right-tool-first-try, parallel vs. serial               |
+| [formatting.md](../vis/packages/skills/conduct/formatting.md)     | XML/Markdown/minimal/few-shot, prefill + stop seq.      |
+| [skill-authoring.md](../vis/packages/skills/conduct/skill-authoring.md) | SKILL.md frontmatter discipline                    |
+| [hooks.md](../vis/packages/core/conduct/hooks.md)               | advisory-only, injection over denial, fail-open         |
+| [precedent.md](../vis/packages/core/conduct/precedent.md)       | log self-observed failures, consult before risky steps  |
+| [tier-sizing.md](../vis/packages/core/conduct/tier-sizing.md)   | Opus intent-level, Sonnet decomposed, Haiku step-by-step|
+| [web-fetch.md](../vis/packages/web/conduct/web-fetch.md)       | WebFetch is Haiku-tier-only; cache and budget           |
+| [inference-substrate.md](shared/vis/conduct/inference-substrate.md) | inference-engine emit-only contract        |
 
 ## Architecture
 
@@ -301,7 +301,7 @@ Naga follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html). Breakin
 
 Pull requests welcome. Key rules:
 
-- Do not edit `shared/foundations/conduct/*.md` in a Naga PR; raise the change in the [schematic](https://github.com/enchanter-ai/schematic) repo so it propagates to every sibling.
+- Do not edit `shared/vis/conduct/*.md` in a Naga PR; raise the change in the [schematic](https://github.com/enchanter-ai/schematic) repo so it propagates to every sibling.
 - Every new engine needs an Author-Year docstring citation and a `docs/science/README.md` section.
 - The single PreCompact hook opens with the subagent-loop guard and exits 0 fail-open. Naga is skill-invoked by design — do not add SessionStart, PostToolUse, or UserPromptSubmit hooks.
 - Honest-numbers contract on every artifact: no N, no handoff. The N4 cosine score must combine N1 + N2 + N3 vectors; single-axis fidelity is rejected.

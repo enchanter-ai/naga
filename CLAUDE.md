@@ -10,27 +10,27 @@ orthogonal to prompt engineering from scratch (Wixie), structural intelligence
 
 These apply to every skill in every plugin. Load once; do not re-derive.
 
-- @../foundations/packages/core/conduct/discipline.md — coding conduct: think-first, simplicity, surgical edits, goal-driven loops
-- @../foundations/packages/core/conduct/capability-fidelity.md — contracts survive capability gaps: recover, escalate, or abort; never silently substitute
-- @../foundations/packages/core/conduct/doubt-engine.md — adversarial self-check before agreement; counter to F01 sycophancy
-- @../foundations/packages/core/conduct/context.md — attention-budget hygiene, U-curve placement, checkpoint protocol
-- @../foundations/packages/core/conduct/verification.md — independent checks, baseline snapshots, dry-run for destructive ops
-- @../foundations/packages/core/conduct/verdict-calibration.md — every verdict (DEPLOY/PASS/COMPLETE/VERIFIED) carries n, sampling method, and a calibration qualifier; foundations abstraction over the wixie DEPLOY bar
-- @../foundations/packages/core/conduct/delegation.md — subagent contracts, tool whitelisting, parallel vs. serial rules
-- @../foundations/packages/core/conduct/failure-modes.md — 14-code taxonomy for accumulated-learning logs
-- @../foundations/packages/core/conduct/tool-use.md — tool-choice hygiene, error payload contract, parallel-dispatch rules
-- @../foundations/packages/skills/conduct/formatting.md — per-target format (XML/Markdown/minimal/few-shot), prefill + stop sequences
-- @../foundations/packages/skills/conduct/skill-authoring.md — SKILL.md frontmatter discipline, discovery test
-- @../foundations/packages/core/conduct/hooks.md — advisory-only hooks, injection over denial, fail-open
-- @../foundations/packages/core/conduct/metacognition.md — periodic goal-restate; fires every K=8 tool-uses or on user meta-question
-- @../foundations/packages/core/conduct/precedent.md — log self-observed failures to `state/precedent-log.md`; consult before risky steps
-- @../foundations/packages/core/conduct/precedent-freshness.md — verify self-authored memory/precedent/briefings before relying on them: Class-A surfaces (path/function/flag) get a Glob/Grep existence check; Class-B snapshots get a git-log freshness check; Class-C feedback rules are trusted unless contradicted
-- @../foundations/packages/core/conduct/prior-art-discovery.md — F28 counter: run the 5-target discovery pass (shared/scripts, packages/*/skills, state/proposals, slug-glob, signature-grep) before authoring a new tool/script/skill/module
-- @../foundations/packages/core/conduct/reversibility-foresight.md — classify action reversibility (trivial/costly/impossible) before acting; confirmation scales with tier
-- @../foundations/packages/core/conduct/substrate-consumption.md — read-side complement to precedent.md: consume briefing, MEMORY, learnings, and precedent before acting; counter to F24 substrate-blindness
-- @../foundations/packages/core/conduct/sunk-cost-iteration.md — stop-and-re-ask after 2 INCONCLUSIVE/BLOCKED results on the same artifact; iteration is not an authorization to keep patching
-- @../foundations/packages/core/conduct/tier-sizing.md — Opus intent-level, Sonnet decomposed, Haiku senior-to-junior
-- @../foundations/packages/web/conduct/web-fetch.md — WebFetch is Haiku-tier-only; cache and budget
+- @../vis/packages/core/conduct/discipline.md — coding conduct: think-first, simplicity, surgical edits, goal-driven loops
+- @../vis/packages/core/conduct/capability-fidelity.md — contracts survive capability gaps: recover, escalate, or abort; never silently substitute
+- @../vis/packages/core/conduct/doubt-engine.md — adversarial self-check before agreement; counter to F01 sycophancy
+- @../vis/packages/core/conduct/context.md — attention-budget hygiene, U-curve placement, checkpoint protocol
+- @../vis/packages/core/conduct/verification.md — independent checks, baseline snapshots, dry-run for destructive ops
+- @../vis/packages/core/conduct/verdict-calibration.md — every verdict (DEPLOY/PASS/COMPLETE/VERIFIED) carries n, sampling method, and a calibration qualifier; vis-side abstraction over the wixie DEPLOY bar
+- @../vis/packages/core/conduct/delegation.md — subagent contracts, tool whitelisting, parallel vs. serial rules
+- @../vis/packages/core/conduct/failure-modes.md — 14-code taxonomy for accumulated-learning logs
+- @../vis/packages/core/conduct/tool-use.md — tool-choice hygiene, error payload contract, parallel-dispatch rules
+- @../vis/packages/skills/conduct/formatting.md — per-target format (XML/Markdown/minimal/few-shot), prefill + stop sequences
+- @../vis/packages/skills/conduct/skill-authoring.md — SKILL.md frontmatter discipline, discovery test
+- @../vis/packages/core/conduct/hooks.md — advisory-only hooks, injection over denial, fail-open
+- @../vis/packages/core/conduct/metacognition.md — periodic goal-restate; fires every K=8 tool-uses or on user meta-question
+- @../vis/packages/core/conduct/precedent.md — log self-observed failures to `state/precedent-log.md`; consult before risky steps
+- @../vis/packages/core/conduct/precedent-freshness.md — verify self-authored memory/precedent/briefings before relying on them: Class-A surfaces (path/function/flag) get a Glob/Grep existence check; Class-B snapshots get a git-log freshness check; Class-C feedback rules are trusted unless contradicted
+- @../vis/packages/core/conduct/prior-art-discovery.md — F28 counter: run the 5-target discovery pass (shared/scripts, packages/*/skills, state/proposals, slug-glob, signature-grep) before authoring a new tool/script/skill/module
+- @../vis/packages/core/conduct/reversibility-foresight.md — classify action reversibility (trivial/costly/impossible) before acting; confirmation scales with tier
+- @../vis/packages/core/conduct/substrate-consumption.md — read-side complement to precedent.md: consume briefing, MEMORY, learnings, and precedent before acting; counter to F24 substrate-blindness
+- @../vis/packages/core/conduct/sunk-cost-iteration.md — stop-and-re-ask after 2 INCONCLUSIVE/BLOCKED results on the same artifact; iteration is not an authorization to keep patching
+- @../vis/packages/core/conduct/tier-sizing.md — Opus intent-level, Sonnet decomposed, Haiku senior-to-junior
+- @../vis/packages/web/conduct/web-fetch.md — WebFetch is Haiku-tier-only; cache and budget
 - @shared/conduct/inference-substrate.md — emit-only contract for the Wixie inference engine
 
 When a module conflicts with a plugin-local instruction, the plugin wins — but log the override.
@@ -99,7 +99,7 @@ Markers: **[H]** hook-enforced (deterministic) · **[A]** advisory (relies on yo
 | `plugins/naga-observe/state/patterns/<hash>.json`           | naga-observe      | Persisted fingerprint dict per source-artifact hash            |
 | `plugins/naga-learning/state/posterior.json`                | naga-learning     | N5 per-(pattern-class x target-domain) fidelity posterior      |
 | `plugins/naga-learning/state/learnings.jsonl`               | naga-learning     | Append-only compaction-event log                               |
-| `plugins/<sub>/state/precedent-log.md`                      | per sub-plugin    | Self-observed operational failures (see @../foundations/packages/core/conduct/precedent.md) |
+| `plugins/<sub>/state/precedent-log.md`                      | per sub-plugin    | Self-observed operational failures (see @../vis/packages/core/conduct/precedent.md) |
 
 ## Agent tiers
 
