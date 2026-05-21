@@ -1,7 +1,7 @@
 # Naga
 
 <p align="center">
-  <img src="docs/assets/social-preview.jpg" alt="Naga mascot" width="1280">
+  <img src="docs/assets/hero.png" alt="Naga mascot" width="1280">
 </p>
 
 <p>
