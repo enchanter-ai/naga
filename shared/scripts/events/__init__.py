@@ -4,9 +4,8 @@ Naga event-bus helpers — typed wrappers over shared.scripts.publish.publish.
 Exposes one function per published topic listed in `CLAUDE.md § Events`.
 Every helper is fail-open per shared/vis/conduct/hooks.md — advisory, never raises.
 
-Phase-1 file-tail fallback: publishes go through Pech's `publish.py` (copied
-verbatim into `shared/scripts/publish.py`) which JSONL-appends events to the
-enchanted-mcp bus file.
+Phase-1 file-tail fallback: publishes go through `shared/scripts/publish.py`
+which JSONL-appends events to the enchanted-mcp bus file.
 """
 from __future__ import annotations
 
@@ -28,17 +27,27 @@ def publish_pattern_fingerprinted(
     n2_terms: list,
     captured_at: str,
 ) -> None:
-    """naga.pattern.fingerprinted — emitted by naga-observe after N1+N2 extraction."""
-    publish(
-        "naga.pattern.fingerprinted",
-        {
-            "source_path": source_path,
-            "fingerprint_hash": fingerprint_hash,
-            "n1_signature": n1_signature,
-            "n2_terms": list(n2_terms),
-            "captured_at": captured_at,
-        },
-    )
+    """naga.pattern.fingerprinted — emitted by naga-observe after N1+N2 extraction.
+
+    Fail-open: any exception during payload assembly or publishing is logged to
+    stderr and swallowed. Never raises to the caller.
+    """
+    try:
+        publish(
+            "naga.pattern.fingerprinted",
+            {
+                "source_path": source_path,
+                "fingerprint_hash": fingerprint_hash,
+                "n1_signature": n1_signature,
+                "n2_terms": list(n2_terms),
+                "captured_at": captured_at,
+            },
+        )
+    except Exception as exc:  # pragma: no cover — fail-open contract
+        print(
+            f"[naga:events] publish_pattern_fingerprinted swallowed: {exc}",
+            file=sys.stderr,
+        )
 
 
 def publish_artifact_generated(
@@ -52,19 +61,25 @@ def publish_artifact_generated(
     """naga.artifact.generated — honest-numbers contract: (score, ci_low, ci_high, N) required.
 
     Emitted by naga-shift after a generated artifact passes the per-class N5
-    threshold gate.
+    threshold gate. Fail-open: never raises.
     """
-    publish(
-        "naga.artifact.generated",
-        {
-            "source_path": source_path,
-            "target_path": target_path,
-            "fidelity_score": fidelity_score,
-            "ci_low": ci_low,
-            "ci_high": ci_high,
-            "N": N,
-        },
-    )
+    try:
+        publish(
+            "naga.artifact.generated",
+            {
+                "source_path": source_path,
+                "target_path": target_path,
+                "fidelity_score": fidelity_score,
+                "ci_low": ci_low,
+                "ci_high": ci_high,
+                "N": N,
+            },
+        )
+    except Exception as exc:  # pragma: no cover — fail-open contract
+        print(
+            f"[naga:events] publish_artifact_generated swallowed: {exc}",
+            file=sys.stderr,
+        )
 
 
 def publish_fidelity_measured(
@@ -75,18 +90,27 @@ def publish_fidelity_measured(
     ci_high: float,
     N: int,
 ) -> None:
-    """naga.fidelity.measured — emitted by naga-validate after N1+N4 scoring."""
-    publish(
-        "naga.fidelity.measured",
-        {
-            "generated_path": generated_path,
-            "source_pattern": source_pattern,
-            "score": score,
-            "ci_low": ci_low,
-            "ci_high": ci_high,
-            "N": N,
-        },
-    )
+    """naga.fidelity.measured — emitted by naga-validate after N1+N4 scoring.
+
+    Fail-open: never raises.
+    """
+    try:
+        publish(
+            "naga.fidelity.measured",
+            {
+                "generated_path": generated_path,
+                "source_pattern": source_pattern,
+                "score": score,
+                "ci_low": ci_low,
+                "ci_high": ci_high,
+                "N": N,
+            },
+        )
+    except Exception as exc:  # pragma: no cover — fail-open contract
+        print(
+            f"[naga:events] publish_fidelity_measured swallowed: {exc}",
+            file=sys.stderr,
+        )
 
 
 def publish_pattern_refreshed(
@@ -97,16 +121,22 @@ def publish_pattern_refreshed(
     """naga.pattern.refreshed — emitted by naga-learning after PreCompact N5 update.
 
     pattern_class in {claude-md, python-module, plugin-json, hook-script,
-    agent-md, test-module, docs-md, generic}.
+    agent-md, test-module, docs-md, generic}. Fail-open: never raises.
     """
-    publish(
-        "naga.pattern.refreshed",
-        {
-            "pattern_class": pattern_class,
-            "n_observations": n_observations,
-            "posterior": dict(posterior),
-        },
-    )
+    try:
+        publish(
+            "naga.pattern.refreshed",
+            {
+                "pattern_class": pattern_class,
+                "n_observations": n_observations,
+                "posterior": dict(posterior),
+            },
+        )
+    except Exception as exc:  # pragma: no cover — fail-open contract
+        print(
+            f"[naga:events] publish_pattern_refreshed swallowed: {exc}",
+            file=sys.stderr,
+        )
 
 
 __all__ = [
