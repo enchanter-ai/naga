@@ -1,0 +1,29 @@
+{
+  "name": "naga-shift",
+  "version": "0.1.0",
+  "description": "Generates a target artifact matching the source-pattern fingerprint via N1+N2+N3+N4 with N5 per-class threshold gating. Loop: emit chunk, score N4, rewrite below threshold. Use when the user runs /naga:match.",
+  "author": {
+    "name": "Enchanter Labs"
+  },
+  "license": "MIT",
+  "keywords": [
+    "generation",
+    "pattern-replication",
+    "cosine-fidelity"
+  ],
+  "interface": {
+    "displayName": "Naga Shift",
+    "shortDescription": "Generates a target artifact matching the source-pattern fingerprint via N1+N2+N\u2026",
+    "longDescription": "Generates a target artifact matching the source-pattern fingerprint via N1+N2+N3+N4 with N5 per-class threshold gating. Loop: emit chunk, score N4, rewrite below threshold. Use when the user runs /naga:match.",
+    "developerName": "Enchanter Labs",
+    "category": "Productivity",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Use Naga Shift on my project"
+    ]
+  },
+  "skills": "./skills/"
+}

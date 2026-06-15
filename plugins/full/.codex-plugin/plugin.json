@@ -1,0 +1,27 @@
+{
+  "name": "full",
+  "version": "0.1.0",
+  "description": "Naga meta-plugin. One install pulls in all six Naga sub-plugins via dependency resolution: naga-observe, naga-shift, naga-validate, naga-cross-repo, naga-fingerprint, naga-learning.",
+  "author": {
+    "name": "Enchanter Labs"
+  },
+  "license": "MIT",
+  "keywords": [
+    "naga",
+    "meta-plugin"
+  ],
+  "interface": {
+    "displayName": "Full",
+    "shortDescription": "Naga meta-plugin. One install pulls in all six Naga sub-plugins via dependency\u2026",
+    "longDescription": "Naga meta-plugin. One install pulls in all six Naga sub-plugins via dependency resolution: naga-observe, naga-shift, naga-validate, naga-cross-repo, naga-fingerprint, naga-learning.",
+    "developerName": "Enchanter Labs",
+    "category": "Productivity",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Use Full on my project"
+    ]
+  }
+}

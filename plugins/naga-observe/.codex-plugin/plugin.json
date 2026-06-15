@@ -1,0 +1,30 @@
+{
+  "name": "naga-observe",
+  "version": "0.1.0",
+  "description": "Extracts the pattern fingerprint from a source artifact via N1 Zhang-Shasha tree edit signature + N2 Spaerck Jones TF-IDF over identifier/comment/structure tokens. Persists state/patterns/<hash>.json. Use when the user runs /naga:observe.",
+  "author": {
+    "name": "Enchanter Labs"
+  },
+  "license": "MIT",
+  "keywords": [
+    "pattern",
+    "fingerprint",
+    "ast",
+    "tfidf"
+  ],
+  "interface": {
+    "displayName": "Naga Observe",
+    "shortDescription": "Extracts the pattern fingerprint from a source artifact via N1 Zhang-Shasha tre\u2026",
+    "longDescription": "Extracts the pattern fingerprint from a source artifact via N1 Zhang-Shasha tree edit signature + N2 Spaerck Jones TF-IDF over identifier/comment/structure tokens. Persists state/patterns/<hash>.json. Use when the user runs /naga:observe.",
+    "developerName": "Enchanter Labs",
+    "category": "Productivity",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Use Naga Observe on my project"
+    ]
+  },
+  "skills": "./skills/"
+}

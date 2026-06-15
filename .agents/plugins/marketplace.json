@@ -1,0 +1,92 @@
+{
+  "name": "naga",
+  "interface": {
+    "displayName": "Naga"
+  },
+  "plugins": [
+    {
+      "name": "full",
+      "source": {
+        "source": "local",
+        "path": "./plugins/full"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    },
+    {
+      "name": "naga-cross-repo",
+      "source": {
+        "source": "local",
+        "path": "./plugins/naga-cross-repo"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    },
+    {
+      "name": "naga-fingerprint",
+      "source": {
+        "source": "local",
+        "path": "./plugins/naga-fingerprint"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    },
+    {
+      "name": "naga-learning",
+      "source": {
+        "source": "local",
+        "path": "./plugins/naga-learning"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    },
+    {
+      "name": "naga-observe",
+      "source": {
+        "source": "local",
+        "path": "./plugins/naga-observe"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    },
+    {
+      "name": "naga-shift",
+      "source": {
+        "source": "local",
+        "path": "./plugins/naga-shift"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    },
+    {
+      "name": "naga-validate",
+      "source": {
+        "source": "local",
+        "path": "./plugins/naga-validate"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

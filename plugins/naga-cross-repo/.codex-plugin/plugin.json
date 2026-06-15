@@ -1,0 +1,29 @@
+{
+  "name": "naga-cross-repo",
+  "version": "0.1.0",
+  "description": "Cross-repo pattern replication with sibling-repo path resolution. Runs N1+N2+N3+N4 against artifacts in two distinct repository trees. Use when the user runs /naga:match-across with a remote source and target.",
+  "author": {
+    "name": "Enchanter Labs"
+  },
+  "license": "MIT",
+  "keywords": [
+    "cross-repo",
+    "pattern-replication",
+    "sibling-repos"
+  ],
+  "interface": {
+    "displayName": "Naga Cross Repo",
+    "shortDescription": "Cross-repo pattern replication with sibling-repo path resolution. Runs N1+N2+N3\u2026",
+    "longDescription": "Cross-repo pattern replication with sibling-repo path resolution. Runs N1+N2+N3+N4 against artifacts in two distinct repository trees. Use when the user runs /naga:match-across with a remote source and target.",
+    "developerName": "Enchanter Labs",
+    "category": "Productivity",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Use Naga Cross Repo on my project"
+    ]
+  },
+  "skills": "./skills/"
+}
