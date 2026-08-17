@@ -235,7 +235,7 @@ Tracked in [docs/ROADMAP.md](docs/ROADMAP.md) and the shared [ecosystem map](htt
 | N2 | Spaerck Jones TF-IDF                  | Spaerck Jones K. (1972), Journal of Documentation 28(1):11-21                          |
 | N3 | Levenshtein Edit Distance             | Levenshtein V.I. (1966), Soviet Physics Doklady 10(8):707-710                          |
 | N4 | Salton-Wong-Yang Cosine Similarity    | Salton G., Wong A., Yang C.S. (1975), Communications of the ACM 18(11):613-620         |
-| N5 | Gauss Accumulation: Fidelity Drift    | Gauss C.F. (1809), "Theoria motus corporum coelestium" (least-squares foundation)      |
+| N5 | Gauss Accumulation: Fidelity Drift    | Brown R.G. (1956) / Holt C.C. (1957), exponential smoothing; conjugate Beta-Binomial posterior |
 
 Full derivations: [`docs/science/README.md`](docs/science/README.md).
 
