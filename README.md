@@ -19,7 +19,7 @@ Observes an existing artifact's structural and stylistic fingerprint and generat
 
 **6 sub-plugins. 5 engines. 3 agents. 5 slash commands. Single PreCompact hook by design (skill-invoked, like Wixie). One install.**
 
-> Developer runs `/naga:observe ../vis/packages/core/conduct/discipline.md`. **naga-fingerprinter** extracts the AST/Markdown shape vector via **N1 Zhang-Shasha** (148 nodes), the TF-IDF token signature via **N2 Spärck Jones** (84 distinct stems), and the heading/identifier naming convention via **N3 Levenshtein** (kebab-case, 4-level nesting). Fingerprint hash `a3f2…` persists to `state/patterns/`. Developer then runs `/naga:match ../vis/packages/core/conduct/discipline.md shared/conduct/security.md` to scaffold a new sibling module. **naga-shaper** generates chunk-by-chunk, scoring each via **N4 Salton-Wong-Yang cosine** against the fingerprint; chunks below the per-(`claude-md`, current target) **N5** posterior threshold trigger rewrite. Final fidelity: `0.87 (CI 0.82–0.92, N=232)` — clears the 0.78 threshold. `/compact` fires later — **naga-learning** updates the `(claude-md × claude-md)` posterior to tighten next-time's threshold.
+> Developer runs `/naga:observe ../vis/packages/core/conduct/discipline.md`. **naga-fingerprinter** extracts the AST/Markdown shape vector via **N1 Wagner-Fischer** edit distance over the flattened postorder node-type sequence (148 nodes), the TF-IDF token signature via **N2 Spärck Jones** (84 distinct stems), and the heading/identifier naming convention via **N3 Levenshtein** (kebab-case, 4-level nesting). Fingerprint hash `a3f2…` persists to `state/patterns/`. Developer then runs `/naga:match ../vis/packages/core/conduct/discipline.md shared/conduct/security.md` to scaffold a new sibling module. **naga-shaper** generates chunk-by-chunk, scoring each via **N4 Salton-Wong-Yang cosine** against the fingerprint; chunks below the per-(`claude-md`, current target) **N5** posterior threshold trigger rewrite. Final fidelity: `0.87 (CI 0.82–0.92, N=232)` — clears the 0.78 threshold. `/compact` fires later — **naga-learning** updates the `(claude-md × claude-md)` posterior to tighten next-time's threshold.
 >
 > Time: deterministic fingerprint, bounded generation loop. Developer effort: invoke one slash command.
 
@@ -27,7 +27,7 @@ Observes an existing artifact's structural and stylistic fingerprint and generat
 
 **In plain English:** "Match the style of this file" is a coin flip. The AI averages your example against the entire internet and ships almost-right. Naga makes it actually match — and proves it with a score.
 
-**Technically:** N1 Zhang-Shasha tree edit distance extracts the postorder AST shape signature from the source artifact; N2 Spaerck Jones TF-IDF captures the identifier/comment/structure token fingerprint; both are stored atomically in `state/patterns/<hash>.json`. N4 Salton-Wong-Yang cosine fidelity is scored per generated chunk against the fingerprint, and chunks below the per-(pattern-class × target-domain) N5 Gauss posterior threshold are rewritten once then dropped — validated output ships with `(score, ci_low, ci_high, N)` from a bootstrap 95% CI.
+**Technically:** N1 Wagner-Fischer edit distance extracts the flattened postorder AST node-type-sequence shape signature from the source artifact (a coarse same-shape screen, not a true Zhang-Shasha tree edit distance — see [Known limitations](#the-science-behind-naga)); N2 Spaerck Jones TF-IDF captures the identifier/comment/structure token fingerprint; both are stored atomically in `state/patterns/<hash>.json`. N4 Salton-Wong-Yang cosine fidelity is scored per generated chunk against the fingerprint, and chunks below the per-(pattern-class × target-domain) N5 Gauss posterior threshold are rewritten once then dropped — validated output ships with `(score, ci_low, ci_high, N)` from a bootstrap 95% CI.
 
 ---
 
@@ -75,7 +75,7 @@ On `/naga:observe <source>`, **naga-observe** parses the source artifact via
 <p align="center">
   <a href="docs/assets/pipeline.mmd" title="View pipeline source (Mermaid)">
     <img src="docs/assets/pipeline.svg"
-         alt="Naga six-subplugin architecture blueprint — source artifact input flowing through naga-observe (N1 Zhang-Shasha tree edit distance + N2 Spärck Jones TF-IDF fingerprint extraction), naga-shift (emit-score-rewrite loop with N3 Levenshtein naming distance and N4 Salton-Wong-Yang cosine fidelity gating against N5 per-class threshold), three auxiliary skill sub-plugins (naga-validate, naga-cross-repo, naga-fingerprint), and naga-learning (single PreCompact hook updating N5 Gauss per-(pattern-class × target-domain) fidelity posterior); publishing four naga.* events on the enchanted-mcp bus with optional peer-plugin enrichment from Gorgon and Wixie"
+         alt="Naga six-subplugin architecture blueprint — source artifact input flowing through naga-observe (N1 Wagner-Fischer flattened-AST edit distance + N2 Spärck Jones TF-IDF fingerprint extraction), naga-shift (emit-score-rewrite loop with N3 Levenshtein naming distance and N4 Salton-Wong-Yang cosine fidelity gating against N5 per-class threshold), three auxiliary skill sub-plugins (naga-validate, naga-cross-repo, naga-fingerprint), and naga-learning (single PreCompact hook updating N5 Gauss per-(pattern-class × target-domain) fidelity posterior); publishing four naga.* events on the enchanted-mcp bus with optional peer-plugin enrichment from Gorgon and Wixie"
          width="100%" style="max-width: 1100px;">
   </a>
 </p>
@@ -86,8 +86,9 @@ Source: [docs/assets/pipeline.mmd](docs/assets/pipeline.mmd) · Regeneration com
 
 </sub>
 
-stdlib `ast`, runs **N1 Zhang-Shasha tree edit distance** against an empty
-AST to derive the postorder shape signature, runs **N2 Spaerck Jones TF-IDF**
+stdlib `ast`, runs **N1 Wagner-Fischer edit distance** over the flattened
+postorder node-type sequence against an empty AST to derive the shape
+signature, runs **N2 Spaerck Jones TF-IDF**
 over identifier/comment/structure tokens, and persists the resulting
 fingerprint atomically to `plugins/naga-observe/state/patterns/<hash>.json`.
 
@@ -112,7 +113,7 @@ Cookiecutter, Yeoman, and plopjs hardcode patterns at template-author time. The 
 
 ### Fingerprint is multi-axis and multi-file by construction
 
-GitHub Copilot "complete in similar style" operates on a single-file, single-cursor context. Cross-file structural patterns — naming conventions, error-handling idioms, blank-line conventions — break across modules because Copilot never read the second file. Naga's N1 Zhang-Shasha tree edit distance compares ASTs across the **whole source artifact set**; N2 TF-IDF spans identifier, comment, and structure tokens; N3 Levenshtein pins naming-convention strings. All three must jointly contribute before N4 cosine fidelity clears the threshold.
+GitHub Copilot "complete in similar style" operates on a single-file, single-cursor context. Cross-file structural patterns — naming conventions, error-handling idioms, blank-line conventions — break across modules because Copilot never read the second file. Naga's N1 Wagner-Fischer edit distance compares flattened AST node-type sequences across the **whole source artifact set**; N2 TF-IDF spans identifier, comment, and structure tokens; N3 Levenshtein pins naming-convention strings. All three must jointly contribute before N4 cosine fidelity clears the threshold.
 
 ### Generation operates inside a hard structural constraint, not against a prior
 
@@ -231,11 +232,20 @@ Tracked in [docs/ROADMAP.md](docs/ROADMAP.md) and the shared [ecosystem map](htt
 
 | ID | Name                                  | Reference                                                                              |
 |----|---------------------------------------|----------------------------------------------------------------------------------------|
-| N1 | Zhang-Shasha Tree Edit Distance       | Zhang K. and Shasha D. (1989), SIAM Journal on Computing 18(6):1245-1262                |
+| N1 | Wagner-Fischer Edit Distance (flattened AST postorder) | Wagner R.A. and Fischer M.J. (1974), Journal of the ACM 21(1):168-173  |
 | N2 | Spaerck Jones TF-IDF                  | Spaerck Jones K. (1972), Journal of Documentation 28(1):11-21                          |
 | N3 | Levenshtein Edit Distance             | Levenshtein V.I. (1966), Soviet Physics Doklady 10(8):707-710                          |
 | N4 | Salton-Wong-Yang Cosine Similarity    | Salton G., Wong A., Yang C.S. (1975), Communications of the ACM 18(11):613-620         |
 | N5 | Gauss Accumulation: Fidelity Drift    | Brown R.G. (1956) / Holt C.C. (1957), exponential smoothing; conjugate Beta-Binomial posterior |
+
+**Known limitation — N1 degeneracy (VF-08):** N1 is a Wagner-Fischer string edit
+distance over the *flattened postorder node-type sequence* of the AST, not a
+true Zhang-Shasha tree edit distance. Flattening discards structure, so
+structurally different programs with the same node-type multiset in the same
+postorder position can collapse to distance 0 — e.g. `f(a, g(b))` vs.
+`f(g(a, b))` scores identically. Treat N1 as a coarse same-shape screen, not a
+structural proof of equivalence, until a true tree-edit-distance
+implementation replaces it.
 
 Full derivations: [`docs/science/README.md`](docs/science/README.md).
 
