@@ -5,11 +5,11 @@ One section per engine listed in `CLAUDE.md § Algorithms`.
 
 ---
 
-## N1 — Zhang-Shasha Tree Edit Distance
+## N1 — Wagner-Fischer Edit Distance (postorder AST)
 
-**Reference:** Zhang K. and Shasha D. (1989), "Simple fast algorithms for the
-editing distance between trees and related problems", SIAM Journal on
-Computing 18(6):1245-1262.
+**Reference (implemented):** Wagner R.A. and Fischer M.J. (1974), "The String-to-String Correction Problem", JACM 21(1):168-173 — applied to the flattened postorder node-type sequence. The full tree-aware form (Zhang & Shasha 1989, SIAM J. Comput. 18(6):1245-1262) is NOT implemented.
+
+**Known limitation (VF-08):** because only the flattened node-type sequence is compared, structurally different trees with the same node multiset collapse to distance 0 (e.g. `f(a, g(b))` vs `f(g(a, b))`).
 
 **Signature:** `tree_edit_distance(source_tree: ast.AST, target_tree: ast.AST) -> int`
 
