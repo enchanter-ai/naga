@@ -5,11 +5,11 @@ One section per engine listed in `CLAUDE.md § Algorithms`.
 
 ---
 
-## N1 — Wagner-Fischer Edit Distance (postorder AST)
+## N1 — Zhang-Shasha Tree Edit Distance (structural AST)
 
-**Reference (implemented):** Wagner R.A. and Fischer M.J. (1974), "The String-to-String Correction Problem", JACM 21(1):168-173 — applied to the flattened postorder node-type sequence. The full tree-aware form (Zhang & Shasha 1989, SIAM J. Comput. 18(6):1245-1262) is NOT implemented.
+**Reference (implemented):** Zhang K. and Shasha D. (1989), "Simple Fast Algorithms for the Editing Distance Between Trees and Related Problems", SIAM J. Comput. 18(6):1245-1262 — the ordered-tree edit distance, applied directly to the parsed AST.
 
-**Known limitation (VF-08):** because only the flattened node-type sequence is compared, structurally different trees with the same node multiset collapse to distance 0 (e.g. `f(a, g(b))` vs `f(g(a, b))`).
+**VF-08 (resolved):** N1 previously flattened the AST to its postorder node-type sequence and ran a Wagner-Fischer *string* edit distance, which discarded structure — structurally different trees with the same node multiset (e.g. `f(a, g(b))` vs `f(g(a, b))`) collapsed to distance 0. The Zhang-Shasha implementation walks the tree structure, so those cases now yield a non-zero distance (2 for that example). The degeneracy is closed.
 
 **Signature:** `tree_edit_distance(source_tree: ast.AST, target_tree: ast.AST) -> int`
 
@@ -21,19 +21,22 @@ operations on individual nodes. Zhang and Shasha showed that the problem
 admits an O(|T1| * |T2| * min(depth(T1), leaves(T1)) * min(depth(T2), leaves(T2)))
 solution via dynamic programming over postorder-numbered subtrees.
 
-Naga's implementation uses the simplified Wagner-Fischer DP over postorder
-sequences (cost = 1 per insert / delete / relabel) — fast, deterministic,
-and sufficient for the structural-shape signature we need. Full Zhang-Shasha
-is a future optimisation if profiling shows DP cost dominates.
+Naga implements exactly this: left-to-right postorder numbering, leftmost-leaf
+descendants `l(i)`, LR-keyroots, and a forest-distance DP nested inside the
+keyroot loop. Node label = AST node type; cost = 1 per insert / delete, and
+relabel is free when types match, 1 otherwise. The metric is symmetric, zero
+on identical trees, and equals the node count when compared against an empty
+tree — the latter is what the fingerprinter persists as `n1_signature`.
 
 ### Implementation notes
 
-- Stdlib only. `ast.parse()` for Python sources; postorder traversal via
-  `ast.iter_child_nodes`.
-- Adjacency: implicit via the AST tree structure.
+- Stdlib only. `ast.parse()` for Python sources; each node adapted to an
+  ordered `(label, children)` node via `ast.iter_child_nodes` (source order).
+- The persisted `n1_signature` (distance from the empty tree = node count) is a
+  size scalar; full structural discrimination happens on the pairwise call at
+  `/naga:match` and `/naga:validate`, which re-parse the source.
 - For very large source trees (> 50 KB), the caller should chunk the source
-  into top-level definitions and hash each subtree to a bounded
-  representation.
+  into top-level definitions and score each subtree separately.
 
 ### Failure modes
 

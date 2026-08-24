@@ -36,6 +36,27 @@ class TestN1TreeEdit(unittest.TestCase):
         b = ast.parse("")
         self.assertEqual(tree_edit_distance(a, b), 0)
 
+    def test_structure_is_respected(self):
+        # Same node-type multiset, different nesting. A flattened sequence
+        # edit distance collapses these to 0; Zhang-Shasha must not.
+        a = ast.parse("f(a, g(b))\n")
+        b = ast.parse("f(g(a, b))\n")
+        self.assertGreater(tree_edit_distance(a, b), 0)
+
+    def test_symmetric_distance(self):
+        a = ast.parse("def f(x):\n    return x + 1\n")
+        b = ast.parse("y = [1, 2, 3]\n")
+        self.assertEqual(tree_edit_distance(a, b), tree_edit_distance(b, a))
+
+    def test_relabel_cheaper_than_full_rebuild(self):
+        # One differing operator node type (Add vs Sub) should cost a single
+        # relabel, cheaper than deleting/reinserting the whole tree.
+        a = ast.parse("x + 1\n")
+        b = ast.parse("x - 1\n")
+        d = tree_edit_distance(a, b)
+        self.assertGreater(d, 0)
+        self.assertLess(d, tree_edit_distance(a, ast.parse("")))
+
 
 class TestN2TFIDF(unittest.TestCase):
     def test_tf_strips_stopwords(self):

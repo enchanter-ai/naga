@@ -1,9 +1,10 @@
 ---
 name: naga-observe
 description: >
-  Extracts the pattern fingerprint from a source artifact via N1 Wagner-Fischer
-  flattened-AST edit-distance signature (a coarse same-shape screen, not true
-  Zhang-Shasha tree edit distance — see VF-08) and N2 Spaerck Jones TF-IDF over
+  Extracts the pattern fingerprint from a source artifact via N1 Zhang-Shasha
+  structural tree-edit distance over the parsed AST (the persisted n1_signature
+  is the tree's node count; the structural comparison itself runs at
+  /naga:match and /naga:validate) and N2 Spaerck Jones TF-IDF over
   identifier, comment, and structure tokens. Persists the fingerprint to plugins/naga-observe/state/
   patterns/<hash>.json. Use when the user runs /naga:observe or asks to capture
   the structural and stylistic shape of an existing file. Do not use for
