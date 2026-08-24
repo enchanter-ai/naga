@@ -2,8 +2,8 @@
 name: naga-validate
 description: >
   Scores fidelity of a generated artifact against a source pattern via N1
-  Wagner-Fischer flattened-AST edit distance (a coarse same-shape screen, not
-  true Zhang-Shasha tree edit distance — see VF-08) + N4 Salton-Wong-Yang
+  Zhang-Shasha structural tree-edit distance over the parsed AST (nesting-aware,
+  not a flattened sequence) + N4 Salton-Wong-Yang
   cosine. Returns
   (score, ci_low, ci_high, N) per the honest-numbers contract. Use when the
   user runs /naga:validate or asks "how close is this to the source pattern?".

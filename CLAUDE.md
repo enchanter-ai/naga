@@ -57,7 +57,7 @@ Agents in `./shared/agents/`.
 
 ## Algorithms
 
-N1 Wagner-Fischer edit distance (postorder AST; VF-08) · N2 Spaerck Jones TF-IDF ·
+N1 Zhang-Shasha tree edit distance (structural AST) · N2 Spaerck Jones TF-IDF ·
 N3 Levenshtein Edit Distance · N4 Salton-Wong-Yang Cosine Similarity ·
 N5 Gauss Accumulation (fidelity drift). Derivations in
 `docs/science/README.md`. **Defining engine:** N4 cosine fidelity score —
@@ -65,7 +65,7 @@ no single axis is permitted to dominate.
 
 | ID | Name                                  | Plugin                          | Algorithm |
 |----|---------------------------------------|---------------------------------|-----------|
-| N1 | Wagner-Fischer edit distance (postorder AST) | naga-observe, naga-shift, naga-validate, naga-cross-repo | Postorder Wagner-Fischer DP on `ast.parse` output. |
+| N1 | Zhang-Shasha tree edit distance (structural AST) | naga-observe, naga-shift, naga-validate, naga-cross-repo | Zhang-Shasha ordered-tree DP (LR-keyroots + forest distance) on `ast.parse` output; respects nesting. |
 | N2 | Spaerck Jones TF-IDF                  | naga-observe, naga-shift, naga-cross-repo, naga-fingerprint | `Counter` term frequency * smoothed `log((N+1)/(df+1))+1` IDF. |
 | N3 | Levenshtein Edit Distance             | naga-shift, naga-cross-repo, naga-fingerprint | Wagner-Fischer DP over identifier strings; `difflib` ratio for [0,1] similarity. |
 | N4 | Salton-Wong-Yang Cosine Similarity    | naga-shift, naga-validate, naga-cross-repo | Pure-Python dot-product over feature dicts; clamp to [0,1]. |

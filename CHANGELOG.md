@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased
+
+- N1 is now a real **Zhang-Shasha (1989)** ordered-tree edit distance over the
+  parsed AST, replacing the flattened postorder Wagner-Fischer *string* edit
+  distance. Structure is now respected — differently nested programs with the
+  same node multiset (e.g. `f(a, g(b))` vs `f(g(a, b))`) no longer collapse to
+  distance 0. Closes VF-08. Signature unchanged; docs/README/SKILLs reconciled.
+
 ## 0.1.0 — 2026-04-25
 
 Phase-1 scaffold.
