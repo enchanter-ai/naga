@@ -226,7 +226,7 @@ Optional subscriptions (Phase-2 enrichment): `gorgon.snapshot.captured` (target-
 
 ## Roadmap
 
-Tracked in [docs/ROADMAP.md](docs/ROADMAP.md) and the shared [ecosystem map](https://github.com/enchanter-ai/wixie/blob/main/docs/ecosystem.md). For upcoming work specific to Naga, see issues tagged [roadmap](https://github.com/enchanter-ai/naga/labels/roadmap).
+Tracked in the shared [ecosystem map](https://github.com/enchanter-ai/wixie/blob/main/docs/ecosystem.md). For upcoming work specific to Naga, see issues tagged [roadmap](https://github.com/enchanter-ai/naga/labels/roadmap).
 
 ## The Science Behind Naga
 
@@ -268,7 +268,7 @@ collapse into one axis.
 ## Agent Conduct (13 Modules)
 
 Every skill inherits a reusable behavioral contract from
-[shared/conduct/](shared/vis/conduct/) — loaded once into [CLAUDE.md](CLAUDE.md),
+[shared/conduct/](shared/conduct/) — loaded once into [CLAUDE.md](CLAUDE.md),
 applied across all plugins.
 
 | Module                         | What it governs                                                            |
@@ -285,7 +285,7 @@ applied across all plugins.
 | [precedent.md](../vis/packages/core/conduct/precedent.md)       | log self-observed failures, consult before risky steps  |
 | [tier-sizing.md](../vis/packages/core/conduct/tier-sizing.md)   | Opus intent-level, Sonnet decomposed, Haiku step-by-step|
 | [web-fetch.md](../vis/packages/web/conduct/web-fetch.md)       | WebFetch is Haiku-tier-only; cache and budget           |
-| [inference-substrate.md](shared/vis/conduct/inference-substrate.md) | inference-engine emit-only contract        |
+| [inference-substrate.md](shared/conduct/inference-substrate.md) | inference-engine emit-only contract        |
 
 ## Architecture
 
