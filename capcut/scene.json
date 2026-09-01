@@ -1,0 +1,208 @@
+{
+  "title": "THE LAST TORCH",
+  "logline": "Dawn breaks over a voxel valley. A single torch on a cobblestone tower is the only thing holding the night back.",
+  "fps": 24,
+  "render_width": 640,
+  "render_height": 360,
+  "upscale": 2,
+  "seed": 20260901,
+  "shots": [
+    {
+      "id": "01_dawn_reveal",
+      "duration": 5.0,
+      "note": "Crane up from the lake shore to reveal the whole valley and the tower on the far ridge.",
+      "light": [
+        "dawn",
+        "day"
+      ],
+      "ease": "in_out",
+      "fov": [
+        72.0,
+        64.0
+      ],
+      "fade_in": 1.0,
+      "title": "THE LAST TORCH",
+      "subtitle": "A NAGA VOXEL SHORT",
+      "keys": [
+        {
+          "pos": [
+            16.0,
+            11.5,
+            18.0
+          ],
+          "look": [
+            3.0,
+            7.5,
+            2.0
+          ]
+        },
+        {
+          "pos": [
+            17.0,
+            20.0,
+            14.0
+          ],
+          "look": [
+            1.0,
+            12.0,
+            -6.0
+          ]
+        },
+        {
+          "pos": [
+            18.0,
+            27.0,
+            12.0
+          ],
+          "look": [
+            0.5,
+            14.5,
+            -13.5
+          ]
+        }
+      ]
+    },
+    {
+      "id": "02_forest_approach",
+      "duration": 4.5,
+      "note": "Low dolly through the treeline, pushing toward the tower. Trees wipe past frame edges.",
+      "light": "day",
+      "ease": "linear",
+      "fov": [
+        68.0,
+        68.0
+      ],
+      "caption": "EVERY NIGHT THEY COME OUT OF THE DARK",
+      "keys": [
+        {
+          "pos": [
+            13.0,
+            16.0,
+            10.0
+          ],
+          "look": [
+            0.5,
+            17.5,
+            -13.5
+          ]
+        },
+        {
+          "pos": [
+            5.0,
+            15.5,
+            -1.0
+          ],
+          "look": [
+            0.5,
+            18.0,
+            -13.5
+          ]
+        }
+      ],
+      "ground_clamp": 3.2
+    },
+    {
+      "id": "03_tower_orbit",
+      "duration": 5.5,
+      "note": "Orbit the tower, tightening the radius as the sun drops. The hero move of the piece.",
+      "light": [
+        "day",
+        "dusk"
+      ],
+      "ease": "in_out",
+      "fov": [
+        66.0,
+        60.0
+      ],
+      "caption": "ONE TOWER. ONE LIGHT.",
+      "orbit": {
+        "center": [
+          0.0,
+          9.0,
+          -14.0
+        ],
+        "target": [
+          0.5,
+          15.5,
+          -13.5
+        ],
+        "start_deg": 40.0,
+        "sweep_deg": 130.0,
+        "radius": [
+          21.0,
+          14.0
+        ],
+        "height": [
+          13.0,
+          10.0
+        ]
+      },
+      "ground_clamp": 4.0
+    },
+    {
+      "id": "04_torch_vigil",
+      "duration": 5.0,
+      "note": "Slow push onto the torch itself as dusk collapses into night and the stars come out.",
+      "light": [
+        "dusk",
+        "night"
+      ],
+      "ease": "in_out",
+      "fov": [
+        60.0,
+        34.0
+      ],
+      "fade_out": 1.4,
+      "caption": "KEEP IT BURNING.",
+      "keys": [
+        {
+          "pos": [
+            8.5,
+            23.5,
+            -6.0
+          ],
+          "look": [
+            0.5,
+            19.3,
+            -13.5
+          ]
+        },
+        {
+          "pos": [
+            3.6,
+            20.8,
+            -10.4
+          ],
+          "look": [
+            0.5,
+            19.3,
+            -13.5
+          ]
+        }
+      ],
+      "ground_clamp": 2.0
+    }
+  ],
+  "transitions": [
+    {
+      "after": "01_dawn_reveal",
+      "type": "dissolve",
+      "frames": 12
+    },
+    {
+      "after": "02_forest_approach",
+      "type": "dissolve",
+      "frames": 10
+    },
+    {
+      "after": "03_tower_orbit",
+      "type": "dissolve",
+      "frames": 14
+    }
+  ],
+  "end_card": {
+    "line1": "NAGA x CAPCUT",
+    "line2": "RENDERED FROM SCRATCH. NO STOCK FOOTAGE.",
+    "duration": 2.0
+  }
+}
