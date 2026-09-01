@@ -24,6 +24,34 @@ camera, render, edit, encode — and hands CapCut a clean, well-labelled
 package for the parts that genuinely need the app. `out/capcut_package/IMPORT.md`
 says which CapCut AI features are worth running on the result and why.
 
+## The finished film
+
+`release/` holds the committed deliverable, so the film survives without
+re-rendering:
+
+| Path | What it is |
+|------|------------|
+| `release/the_last_torch_720p.mp4` | The cut — 1280x720, 24fps, 20.5s |
+| `release/poster.png` | Cover frame |
+| `release/contact_sheet.png` | Twelve frames across the film |
+| `release/shotlist.md` | Shot list with timecodes and camera notes |
+
+A `make.py all` run also writes the full-bitrate master, the per-shot
+clips and the CapCut bundle to `capcut/out/`, which is gitignored.
+
+**The film:** dawn breaks over a voxel valley; a slow crane reveals a lake
+and a cobblestone tower on the ridge. A dolly pushes through the treeline,
+the camera orbits the tower as the sun drops, and the last shot pushes in
+on the torch as night closes and the stars come out.
+
+| # | Shot | Move | Light |
+|---|------|------|-------|
+| 1 | `01_dawn_reveal` | Crane up from the lake shore | dawn -> day |
+| 2 | `02_forest_approach` | Low dolly through the treeline | day |
+| 3 | `03_tower_orbit` | 130-degree orbit, tightening radius | day -> dusk |
+| 4 | `04_torch_vigil` | Push in on the torch, 60mm to 34mm | dusk -> night |
+| 5 | `05_end_card` | — | — |
+
 ## Run it
 
 ```bash
