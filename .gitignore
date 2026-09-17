@@ -10,3 +10,6 @@ state/parse-failures.jsonl
 plugins/*/state/*.json
 plugins/*/state/*.jsonl
 !plugins/*/state/.gitkeep
+
+# Windows null-device artifact: `> NUL` under a POSIX shell creates a real file
+NUL
